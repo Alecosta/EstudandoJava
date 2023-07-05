@@ -47,7 +47,7 @@ public class Exercicio21 {
         }
         contaPessoas = contaAptos+contaInaptos;
         System.out.println("Total de pessoas Inaptas Informadas: "+contaInaptos);
-        System.out.println("Total de pessoas Aptas Informadas: "+contaInaptos);
+        System.out.println("Total de pessoas Aptas Informadas: "+contaAptos);
         System.out.println("Total de pessoas Informadas: "+contaPessoas);
     }
 }
