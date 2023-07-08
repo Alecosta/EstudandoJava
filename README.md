@@ -4,3 +4,5 @@ Trilha de Lógica de programação com Java do curso da Proway através da Capge
 (https://www.proway.com.br/)
 
 O Objetivo é elaborar a sequencia de 35 exercicios do Curso de Lógica para Programação III do instrutor Marcio Michelluzzi
+
+os 35 exercicios foram completados de forma simples. nas proximas etapas poderão ser utilizados pra treinar outras tecnicas e implementar tratamentos de erros.
