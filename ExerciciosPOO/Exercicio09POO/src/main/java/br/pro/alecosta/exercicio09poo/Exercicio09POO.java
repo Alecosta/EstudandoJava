@@ -25,13 +25,10 @@ public class Exercicio09POO {
         
         Voo meuVoo = new Voo(new Data(14,7,2023),10,10,777);
         
-
-        
         System.out.println("Voo "+meuVoo.getNumeroVoo() );
         
         System.out.println("Próxima Cadeira Livre "+meuVoo.ProximoLivre());
-        
-                
+                       
         if (meuVoo.Verifica(1)) {
            System.out.println("Cadeira 1 ocupada");
         } else {
