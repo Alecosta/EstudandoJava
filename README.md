@@ -8,5 +8,11 @@ O Objetivo é elaborar a sequencia de 35 exercicios do Curso de Lógica para Pro
 os 35 exercicios foram completados de forma simples. nas proximas etapas poderão ser utilizados pra treinar outras tecnicas e implementar tratamentos de erros.
 
 ==============================================================================================
-Inicio da lista de POO
+Inicio da lista de POO (17 exercicios)
 o primeiro exercicio sugerido pelo professor é o 6 que foi desenvolvido durante a aula. os demais devem ser feitos na sequência.
+==============================================================================================
+ Lista de Interface Grafica OK
+
+==============================================================================================
+Projeto
+   Preparação da camanda de conexão e teste de conexao
