@@ -31,6 +31,11 @@ public class Task {
         this.deadLine = deadLine;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
+        
+    }
+    
+    public Task () {
+        this.createdAt = new Date();
     }
 
     public int getId() {
