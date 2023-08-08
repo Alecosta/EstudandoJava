@@ -68,10 +68,11 @@ public class TaskController {
             statement.setDate(6, new Date(task.getDeadLine().getTime()));
             statement.setDate(7, new Date(task.getCreatedAt().getTime()));
             statement.setDate(8, new Date(task.getUpdatedAt().getTime()));
+            statement.setInt(9, task.getId());
             statement.execute();
             
         } catch (Exception e) {
-             throw new RuntimeException("Erro ao alterar a tarefa "+ e.getMessage(),e); 
+             throw new RuntimeException("Erro ao atualizar a tarefa "+ e.getMessage(),e); 
         } finally {
             ConnectionFactory.closeConnection(conn,statement);
         }
@@ -131,7 +132,7 @@ public class TaskController {
             }
             
         } catch (Exception e) {
-            throw new RuntimeException("Erro"+e.getMessage(),e);
+            throw new RuntimeException("Erro ao inserir a tarefa"+e.getMessage(),e);
         } finally {
             ConnectionFactory.closeConnection(conn,statment,resultSet) ;
         }
