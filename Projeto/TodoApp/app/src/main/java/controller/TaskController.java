@@ -104,16 +104,16 @@ public class TaskController {
        String sql = "SELECT * FROM tasks WHERE ID = ?";
        
        Connection conn = null;
-       PreparedStatement statment = null;
+       PreparedStatement statement = null;
        ResultSet resultSet = null;
        
        List<Task> tasks = new ArrayList<Task>();
        
         try {
             conn = ConnectionFactory.getConnection();
-            statment = conn.prepareStatement(sql);
-            statment.setInt(1, idProject);
-            resultSet = statment.executeQuery();
+            statement = conn.prepareStatement(sql);
+            statement.setInt(1, idProject);
+            resultSet = statement.executeQuery();
             
             while (resultSet.next()) {                
                 Task task = new Task();
@@ -135,7 +135,7 @@ public class TaskController {
         } catch (Exception e) {
             throw new RuntimeException("Erro ao inserir a tarefa"+e.getMessage(),e);
         } finally {
-            ConnectionFactory.closeConnection(conn,statment,resultSet) ;
+            ConnectionFactory.closeConnection(conn,statement,resultSet) ;
         }
        
        return tasks;
