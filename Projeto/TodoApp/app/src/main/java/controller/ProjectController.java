@@ -47,7 +47,7 @@ public class ProjectController {
     public void update(Project project) {
         
         String sql = "UPDATE projects SET name = ?, description = ?"
-                + ", createAt = ?, updatedAt = ? where id = ?";
+                + ", createdAt = ?, updatedAt = ? where id = ?";
         
         Connection conn = null;
         PreparedStatement statement = null;
@@ -62,6 +62,8 @@ public class ProjectController {
             statement.setDate(3, new Date(project.getCreatedAt().getTime()) );
             statement.setDate(4,new Date(project.getUpdatedAt().getTime()));
             statement.setInt(5,project.getId());
+            
+            System.out.println(statement.toString());
              
             statement.execute();
             
