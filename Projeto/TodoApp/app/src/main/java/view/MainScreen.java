@@ -345,7 +345,18 @@ public class MainScreen extends javax.swing.JFrame {
         TaskDialogScreen taskDialogScreen = new TaskDialogScreen(this, rootPaneCheckingEnabled);
         //taskDialogScreen.setProject(null);
         //
-        taskDialogScreen.setVisible(rootPaneCheckingEnabled);
+        int projectIndex = jListProjects.getSelectedIndex(); 
+        Project project = (Project) projectsModel.get(projectIndex);
+        taskDialogScreen.setProject(project);
+        taskDialogScreen.setVisible(true);
+        
+        taskDialogScreen.addWindowListener(new WindowAdapter() {
+            public void windowClosed(WindowEvent e) {
+                int projectIndex = jListProjects.getSelectedIndex(); 
+                Project project = (Project) projectsModel.get(projectIndex);
+                loadTasks(project.getId());
+            }
+        });
     }//GEN-LAST:event_jLabelTasksAddMouseClicked
 
     private void jTableTaskMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableTaskMouseClicked
@@ -448,7 +459,13 @@ public class MainScreen extends javax.swing.JFrame {
         
         taskModel = new TaskTableModel();
         jTableTask.setModel(taskModel);
-        loadTasks(21);
+    //    loadTasks(21);
+        
+        if (!projectsModel.isEmpty()) {
+            jListProjects.setSelectedIndex(0);
+            Project project = (Project) projectsModel.get(0);
+            loadTasks(project.getId());
+        }
     }
     public void loadTasks(int idProject) {
         List<Task> tasks = taskController.getAll(idProject);
