@@ -215,6 +215,11 @@ public class MainScreen extends javax.swing.JFrame {
         jListProjects.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jListProjects.setFixedCellHeight(50);
         jListProjects.setSelectionBackground(new java.awt.Color(0, 153, 102));
+        jListProjects.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jListProjectsMouseClicked(evt);
+            }
+        });
         jScrollPaneProjects.setViewportView(jListProjects);
 
         javax.swing.GroupLayout jPanelProjectListLayout = new javax.swing.GroupLayout(jPanelProjectList);
@@ -356,6 +361,16 @@ public class MainScreen extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jTableTaskMouseClicked
 
+    private void jListProjectsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jListProjectsMouseClicked
+        // TODO add your handling code here:
+        int projectIndex = jListProjects.getSelectedIndex();
+        Project project = (Project) projectsModel.get(projectIndex);
+        loadTasks(project.getId());
+        
+        
+    }//GEN-LAST:event_jListProjectsMouseClicked
+
+
     /**
      * @param args the command line arguments
      */
@@ -438,6 +453,29 @@ public class MainScreen extends javax.swing.JFrame {
     public void loadTasks(int idProject) {
         List<Task> tasks = taskController.getAll(idProject);
         taskModel.setTasks(tasks);
+        showJTablesTask(!tasks.isEmpty());
+    }
+    
+    private void showJTablesTask(boolean hasTasks) {
+        
+      if (hasTasks) {  
+          if (jPanelEmptyList.isVisible()) {
+              jPanelEmptyList.setVisible(false);
+              jPanel5.remove(jPanelEmptyList);
+          }
+          jPanel5.add(jScrollPaneTask);
+          jScrollPaneTask.setVisible(true);
+          jScrollPaneTask.setSize(jPanel5.getWidth(), jPanel5.getHeight());
+      } else {
+          if (jScrollPaneTask.isVisible()) {
+              jScrollPaneTask.setVisible(false);
+              jPanel5.remove(jScrollPaneTask);
+          }
+          jPanel5.add(jPanelEmptyList);
+          jPanelEmptyList.setVisible(true);
+          jPanelEmptyList.setSize(jPanel5.getWidth(), jPanel5.getHeight());
+      } 
+        
     }
     
     public void loadProjects() {
