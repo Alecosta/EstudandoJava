@@ -22,30 +22,30 @@ public class App {
        
         //teste do project
         ProjectController projectController = new ProjectController();
-       
-        Project project = new Project(); 
-        project.setName("Projeto Teste");
-        project.setDescription("Descrição");
-        project.setUpdatedAt(new Date());
-
-        projectController.save(project);
-        
+//       
+//        Project project = new Project(); 
+//        project.setName("Projeto Teste");
+//        project.setDescription("Descrição");
+//        project.setUpdatedAt(new Date());
+//
+//        projectController.save(project);
+//        
         List<Project> projects = projectController.getAll();
-        System.out.println("Total de Projetos "+projects.size());
-
-        project.setId(projects.get(0).getId());
-        project.setName("Novo nome do projeto");
-        project.setUpdatedAt(new Date());
-         
-        projectController.update(project);
-        
-        projects = projectController.getAll();
-        System.out.println("Total de Projetos "+projects.size());
-        
-        projectController.removebyId(projects.get(0).getId());
-        
-        projects = projectController.getAll();
-        System.out.println("Total de Projetos "+projects.size());
+//        System.out.println("Total de Projetos "+projects.size());
+//
+//        project.setId(projects.get(0).getId());
+//        project.setName("Novo nome do projeto");
+//        project.setUpdatedAt(new Date());
+//         
+//        projectController.update(project);
+//        
+//        projects = projectController.getAll();
+//        System.out.println("Total de Projetos "+projects.size());
+//        
+//        projectController.removebyId(projects.get(0).getId());
+//        
+//        projects = projectController.getAll();
+//        System.out.println("Total de Projetos "+projects.size());
         
         //teste do task
         int numProject = projects.get(0).getId();
@@ -57,7 +57,7 @@ public class App {
         task.setUpdatedAt(new Date());
         task.setDeadLine(new Date());
         task.setIdProject(numProject);
-        task.setId(1);
+   //     task.setId(1);
 
         taskController.save(task);
         

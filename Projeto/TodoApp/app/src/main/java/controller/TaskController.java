@@ -22,9 +22,9 @@ public class TaskController {
     
     public void save(Task task) {
         
-        String sql = "INSERT INTO tasks (id,idProject,name,description,completed,"
+        String sql = "INSERT INTO tasks (idProject,name,description,completed,"
                 +"notes,deadLine,createdAt,updatedAt) "
-                +"values(?,?,?,?,?,?,?,?,?)";
+                +"values(?,?,?,?,?,?,?,?)";
         
         Connection connection = null;
         PreparedStatement statement = null;
@@ -32,15 +32,15 @@ public class TaskController {
         try {
             connection = ConnectionFactory.getConnection();
             statement = connection.prepareStatement(sql);
-            statement.setInt(1, task.getId());
-            statement.setInt(2, task.getIdProject());
-            statement.setString(3, task.getName());
-            statement.setString(4, task.getDescription());
-            statement.setBoolean(5, task.getIsCompleted());
-            statement.setString(6, task.getNotes());
-            statement.setDate(7, new Date(task.getDeadLine().getTime()));
-            statement.setDate(8, new Date(task.getCreatedAt().getTime()));
-            statement.setDate(9, new Date(task.getUpdatedAt().getTime()));
+            //statement.setInt(1, task.getId());
+            statement.setInt(1, task.getIdProject());
+            statement.setString(2, task.getName());
+            statement.setString(3, task.getDescription());
+            statement.setBoolean(4, task.getIsCompleted());
+            statement.setString(5, task.getNotes());
+            statement.setDate(6, new Date(task.getDeadLine().getTime()));
+            statement.setDate(7, new Date(task.getCreatedAt().getTime()));
+            statement.setDate(8, new Date(task.getUpdatedAt().getTime()));
             statement.execute();
             
         } catch (Exception e) {
