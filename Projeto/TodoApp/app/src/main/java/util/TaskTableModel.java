@@ -88,6 +88,11 @@ public class TaskTableModel extends AbstractTableModel {
         
         //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+    
+    @Override 
+    public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
+        tasks.get(rowIndex).setIsCompleted((boolean) aValue);
+    }
 
     public String[] getColumns() {
         return columns;
