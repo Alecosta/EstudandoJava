@@ -185,30 +185,40 @@ public class TaskDialogScreen extends javax.swing.JDialog {
     private void jLabelToolBarSaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelToolBarSaveMouseClicked
         // TODO add your handling code here:
         try {
-            Task task = new Task();
-            //task.setIdProject(project.getId());
-            task.setIdProject(project.getId());
-            task.setName(jTextFieldName.getText()) ;
-            task.setDescription(jTextAreaDescription.getText());
-            task.setNotes(jTextAreaNotes.getText());
-            task.setIsCompleted(false);
-            task.setUpdatedAt(new Date());
-            
-            
-            SimpleDateFormat dateformat = new SimpleDateFormat("dd/MM/yyyy");
-            Date deadLine = null;
-            deadLine = dateformat.parse(jFormattedTextFieldDeadLine.getText());
-            
-            task.setDeadLine(deadLine);
-            
-            controller.save(task);
-            JOptionPane.showMessageDialog(rootPane, "Tarefa salva com sucesso");
-            
+            if (jTextFieldName.getText().isEmpty()
+                    || jFormattedTextFieldDeadLine.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(rootPane, "O projeto não foi"
+                        + " salvo, pois exitem campos obrigatórios a serem preenchidos.");
+            } else {
+                if (!jTextFieldName.getText().isEmpty()
+                        || !jFormattedTextFieldDeadLine.getText().isEmpty()) {
+                    Task task = new Task();
+                    //task.setIdProject(project.getId());
+                    task.setIdProject(project.getId());
+                    task.setName(jTextFieldName.getText());
+                    task.setDescription(jTextAreaDescription.getText());
+                    task.setNotes(jTextAreaNotes.getText());
+                    task.setIsCompleted(false);
+                    task.setUpdatedAt(new Date());
+
+                    SimpleDateFormat dateformat = new SimpleDateFormat("dd/MM/yyyy");
+                    Date deadLine = null;
+                    deadLine = dateformat.parse(jFormattedTextFieldDeadLine.getText());
+
+                    task.setDeadLine(deadLine);
+
+                    controller.save(task);
+                    JOptionPane.showMessageDialog(rootPane, "Tarefa salva com sucesso");
+                    this.dispose();
+
+                }
+
+            }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(rootPane, e.getMessage());
         }
         
-        this.dispose();
+        
     }//GEN-LAST:event_jLabelToolBarSaveMouseClicked
 
     /**
